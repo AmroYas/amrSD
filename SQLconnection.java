@@ -10,12 +10,12 @@ public class SQLconnection {
     public static void main(String[] argv) {
         System.out.println("-------- Simple MySQL Application ------------");
 
-        Tunnel t = new Tunnel();
-        try {
-            t.go();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+         Tunnel t = new Tunnel();
+         try {
+             t.go();
+         } catch (Exception ex) {
+             ex.printStackTrace();
+         }
 
         try // initialise the JDBC driver, with a check for it working
         {
