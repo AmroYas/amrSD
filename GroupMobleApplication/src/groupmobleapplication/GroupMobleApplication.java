@@ -11,16 +11,13 @@ package groupmobleapplication;
  */
 
 interface Questions {
-    public void generateSet();
+    public void generateQuestion();
     
-    public void generateSetAnswer();
+    public String generateAnswer();
     
-    public void answer();
+    public String getQuestion();
     
-    public void checkAnswer();
-    
-    public void difficulty();
-    
+    public String getAnswer();
 }
 
 public class GroupMobleApplication {
