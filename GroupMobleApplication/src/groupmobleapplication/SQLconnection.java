@@ -10,12 +10,20 @@ public class SQLconnection {
     public static void main(String[] argv) {
         System.out.println("-------- Simple MySQL Application ------------");
 
-        Tunnel t = new Tunnel();
-        try {
-            t.go();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+        //enable tunnel if you are connectiong from home or any other network outside UNI or disable it if you are at UNI
+        //******************************************************************************************************************
+        
+        //TUNNEL
+        /*
+        
+         Tunnel t = new Tunnel();
+         try {
+         t.go();
+         } catch (Exception ex) {
+         ex.printStackTrace();
+         }
+        
+         */
 
         try // initialise the JDBC driver, with a check for it working
         {
@@ -32,11 +40,13 @@ public class SQLconnection {
         try // open the connection to the MySQL server
         {
             connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:9080/w1439058_0", "w1439058", "Sz2eZkchSIXI");
-//this connetion realy works, if needed change ports 9080 to any avaliable hsould mach "tunnelLocalPort" from Tunnel.java.
+                    //connection address below works only from UNI and it do not requered tunneling make shure you disable tunnel above
+                    // **********************************************************************************************************************
+                    "jdbc:mysql://elephant.ecs.westminster.ac.uk:3306/w1439058_0", "w1439058", "Sz2eZkchSIXI");
 
-            // "jdbc:mysql://localhost:8889/w1439058_0", "root", "root");
-            //"jdbc:mysql://elephant.ecs.westminster.ac.uk:3306/w1439058_0",     "w1439058", "Sz2eZkchSIXI");
+            //connection adderss below works ony if you are running program from home or eny other network outside UNI
+            //*************************************************************************************************************
+            //"jdbc:mysql://localhost:9080/w1439058_0", "w1439058", "Sz2eZkchSIXI");
         } catch (SQLException e) {
             System.out.println("ERROR: MySQL Connection Failed!");
             e.printStackTrace();
