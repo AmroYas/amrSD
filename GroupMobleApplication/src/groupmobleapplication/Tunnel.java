@@ -1,14 +1,22 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package groupmobleapplication;
 
 import com.jcraft.jsch.*;
 
+/**
+ *
+ * @author Dennis I, Yasir Y, Rabia A, Jurjis L, Mohammed R, Richmond Adjei
+ */
 public class Tunnel {
-
- 
 
     public void go() throws Exception {
         String host = "jaguar.wmin.ac.uk";
-        String user =  "w1439058";
-         String password = "zumarik101";
+        String user = "w1439058";
+        String password = "zumarik101";
         int port = 22;
 
         int tunnelLocalPort = 9080;

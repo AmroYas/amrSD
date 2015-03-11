@@ -26,7 +26,20 @@ public class GroupMobleApplication {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-         System.out.println("Test");
+         FormMenu form = new FormMenu();
+         form.setVisible(true);
+        
+        System.out.println("Test1");
+         SQLConnection test1 = new SQLConnection();
+         System.out.println("Test2");
+         String testQuery = "select * from users"; //Test Query
+         test1.runQuery(testQuery);
+         System.out.println("Test3");
+         test1.readQuery();
+         System.out.println("Test4");
+         test1.closeConnection();
+         System.out.println("Test5");
+        
     }
     
 }
