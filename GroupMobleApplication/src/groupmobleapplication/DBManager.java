@@ -66,6 +66,7 @@ public class DBManager {
         }
         String registerQuery = "INSERT INTO users (userName, userPassword) VALUES ('" + userName
                 + "' , '" + strPassword + "');";
+        Arrays.fill(password, '0');
         strPassword = "0";
         boolean success = myConnection.runUpdate(registerQuery);
         return success;

@@ -122,7 +122,7 @@ public class FormGameMenu extends javax.swing.JFrame {
 
     private void buttonLeaderboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLeaderboardActionPerformed
         //Register Button Code
-        this.setVisible(false);
+        //this.setVisible(false);
         //Register jFrame
     }//GEN-LAST:event_buttonLeaderboardActionPerformed
 
