@@ -38,6 +38,7 @@ public class FormRegister extends javax.swing.JFrame {
         passwordField = new javax.swing.JPasswordField();
         passwordFieldConfirm = new javax.swing.JPasswordField();
         textFieldUserName = new javax.swing.JTextField();
+        buttonBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -62,6 +63,14 @@ public class FormRegister extends javax.swing.JFrame {
         buttonSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSubmitActionPerformed(evt);
+            }
+        });
+
+        buttonBack.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        buttonBack.setText("Back");
+        buttonBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonBackActionPerformed(evt);
             }
         });
 
@@ -92,7 +101,9 @@ public class FormRegister extends javax.swing.JFrame {
                 .addGap(0, 41, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(buttonSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buttonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(52, 52, 52))
         );
         layout.setVerticalGroup(
@@ -112,9 +123,11 @@ public class FormRegister extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelPasswordConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(passwordFieldConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(97, 97, 97)
+                .addGap(76, 76, 76)
                 .addComponent(buttonSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(252, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addComponent(buttonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(188, Short.MAX_VALUE))
         );
 
         pack();
@@ -125,13 +138,42 @@ public class FormRegister extends javax.swing.JFrame {
         String userName = textFieldUserName.getText();
         char[] password = passwordField.getPassword();
         char[] passwordConfirm = passwordFieldConfirm.getPassword();
-        boolean confirmed = validatePassword(password, passwordConfirm);
-        if (confirmed == true) {
-            //DBManager dbm = new DBManager();
+        boolean confirmedUN = validateUserName(userName);
+        if (!confirmedUN) {
+            JOptionPane.showMessageDialog(this,
+                    "Somebody already has this username.",
+                    "Invalid Username",
+                    JOptionPane.ERROR_MESSAGE);
         }
-        System.out.println(userName);
-        System.out.println(confirmed);
+        boolean confirmedPW = validatePassword(password, passwordConfirm);
+        if (confirmedPW && confirmedUN) {
+            //SQL Insert
+            DBManager dbm = new DBManager(userName, password);
+            boolean success = dbm.register();
+            if (success) {
+                System.out.println("Registration Successful");
+                //Register Button Code
+                this.setVisible(false);
+                //Register jFrame
+                FormMenu formMenu = new FormMenu();
+                formMenu.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(this,
+                        "Registration Failed.",
+                        "Registration Failed",
+                        JOptionPane.ERROR_MESSAGE);
+                System.out.println("Registration Failed");
+            }
+        }
     }//GEN-LAST:event_buttonSubmitActionPerformed
+
+    private void buttonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBackActionPerformed
+        //Register Button Code
+        this.setVisible(false);
+        //Register jFrame
+        FormMenu formMenu = new FormMenu();
+        formMenu.setVisible(true);
+    }//GEN-LAST:event_buttonBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -168,11 +210,14 @@ public class FormRegister extends javax.swing.JFrame {
         });
     }
 
-    private Boolean validateUsername(String username){
-        //Code
-        return false;
+    private Boolean validateUserName(String username) {
+        DBManager dbm = new DBManager(username);
+        if (!dbm.validateName()) { //False - Username Exists
+            return false;
+        }
+        return true;
     }
-    
+
     private Boolean validatePassword(char[] password, char[] passwordConfirm) {
         if (!Arrays.equals(password, passwordConfirm)) {
             JOptionPane.showMessageDialog(this,
@@ -192,6 +237,7 @@ public class FormRegister extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonBack;
     private javax.swing.JButton buttonSubmit;
     private javax.swing.JLabel labelPassword;
     private javax.swing.JLabel labelPasswordConfirm;

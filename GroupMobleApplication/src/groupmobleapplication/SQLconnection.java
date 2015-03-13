@@ -38,14 +38,13 @@ public class SQLConnection {
         try {
             t.go();
         } catch (Exception ex) {
-            ex.printStackTrace();
+            System.out.println("Exception in Tunner");
         }
 
         try { //Initialise the JDBC driver, with a check for it working
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             System.out.println("ERROR: MySQL JDBC Driver not found; is your CLASSPATH set?");
-            e.printStackTrace();
             return;
         }
         System.out.println("MySQL JDBC Driver Registered.");
@@ -63,7 +62,6 @@ public class SQLConnection {
                     "jdbc:mysql://localhost:9080/w1439058_0", "w1439058", "Sz2eZkchSIXI");
         } catch (SQLException e) {
             System.out.println("ERROR: MySQL Connection Failed!");
-            e.printStackTrace();
             return;
         }
         System.out.println("Database Connected!");
@@ -74,7 +72,6 @@ public class SQLConnection {
             connection.close();
         } catch (SQLException e) {
             System.out.println("WARNING: Failed to close database!");
-            e.printStackTrace();
             return;
         }
         System.out.println("Database closed.");
@@ -87,51 +84,48 @@ public class SQLConnection {
             stmt = connection.createStatement();
         } catch (SQLException e) {
             System.out.println("ERROR: Failed to create Statement.");
-            e.printStackTrace();
-            return;
         }
 
         try { //Try to run the query
             queryRes = stmt.executeQuery(aQuery);
+            System.out.println("Query Successful");
         } catch (SQLException e) {
             System.out.println("ERROR: Cannot execute query.");
-            e.printStackTrace();
-            return;
         }
     }
 
-    public void readQuery() {
-        //int n = 0;    //A counter for the output
+    public boolean runUpdate(String aQuery) {
+        Statement stmt = null;
+        try { //Create a Statement for the SQL query
+            stmt = connection.createStatement();
+        } catch (SQLException e) {
+            System.out.println("ERROR: Failed to create Statement.");
+            return false;
+        }
 
-        //Test Query.
+        try { //Try to run the query
+            stmt.executeUpdate(aQuery);
+            System.out.println("Insert Successful");
+        } catch (SQLException e) {
+            System.out.println("ERROR: Cannot execute query.");
+            return false;
+        }
+        return true;
+    }
+
+    public void readResult(String aColumn) {
         try { //Try to read the query
             while (queryRes.next()) // while there's still some more results of the query...
             {
-                String id = queryRes.getString("userId");
-                String firstName = queryRes.getString("userName");
-                String lastName = queryRes.getString("userPassword");
-
-                System.out.println("ID: " + id + ", USER name: " + firstName
-                        + ", Password: " + lastName);
-
-                /*
-                int numColumns = queryRes.getMetaData().getColumnCount(); //Get how many cols in this entry
-                //n++;
-                //System.out.print("" + n);
-                //Loop through the cols to print them
-                //Column numbers start at 1.
-                {
-                    for (int i = 1; i <= numColumns; i++) {
-                        System.out.print("  " + queryRes.getObject(i));
-                    }
-                }
-                System.out.println("");   //Print a new line at the end of the entry.
-                        */
+                String result = queryRes.getString(aColumn);
+                System.out.println(aColumn + " " + result);
             }
         } catch (SQLException e) {
             System.out.println("ERROR: Cannot execute query.");
-            e.printStackTrace();
-            return;
         }
+    }
+
+    public ResultSet getResult() {
+        return queryRes;
     }
 }
