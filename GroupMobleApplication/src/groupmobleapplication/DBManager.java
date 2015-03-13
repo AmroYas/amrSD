@@ -21,6 +21,7 @@ public class DBManager {
     private int attemptNumber;
 
     SQLConnection myConnection = new SQLConnection();
+    ResultSet result;
 
     public DBManager(String name, char[] pass) {
         userName = name;
@@ -37,9 +38,7 @@ public class DBManager {
 
     public Boolean logIn() {
         String logInQuery = "SELECT * FROM users WHERE userName = '" + userName + "'";
-        myConnection.runQuery(logInQuery);
-        ResultSet result;
-        result = myConnection.getResult();
+        runQuery(logInQuery);
         int passwordLength = getPasswordLength(result);
         char[] dbPassword = new char[passwordLength];
         try { //Try to read the query Result Set
@@ -74,9 +73,7 @@ public class DBManager {
 
     public void adminReadDB() {
         String selectAll = "SELECT userId, userName, userRank FROM users";
-        myConnection.runQuery(selectAll);
-        ResultSet result;
-        result = myConnection.getResult();
+        runQuery(selectAll);
         try { //Try to read the query Result Set
             while (result.next()) // while there's still some more results of the query...
             {
@@ -104,10 +101,8 @@ public class DBManager {
     }
 
     public Boolean validateName() {
-        String logInQuery = "SELECT * FROM users WHERE userName = '" + userName + "'";
-        myConnection.runQuery(logInQuery);
-        ResultSet result;
-        result = myConnection.getResult();
+        String validateName = "SELECT * FROM users WHERE userName = '" + userName + "'";
+        runQuery(validateName);
         try { //Try to read the query Result Set
             result.first(); //Move pointer to start
             String userLogIn = result.getString("userName");
@@ -122,18 +117,21 @@ public class DBManager {
     }
 
     public char getUserRank() {
-        String logInQuery = "SELECT userRank FROM users WHERE userName = '" + userName + "'";
-        myConnection.runQuery(logInQuery);
-        ResultSet result;
-        result = myConnection.getResult();
+        String personRank = "SELECT userRank FROM users WHERE userName = '" + userName + "'";
+        runQuery(personRank);
         char userRank = 'u';
         try { //Try to read the query Result Set
             result.first(); //Move pointer to start
             userRank = result.getString("userRank").charAt(0);
         } catch (SQLException e) {
-            System.out.println("ERROR @getUserAdmin: Cannot execute read query.");
+            System.out.println("ERROR @getUserRank: Cannot execute read query.");
         }
         return userRank;
+    }
+
+    private void runQuery(String theQuery) {
+        myConnection.runQuery(theQuery);
+        result = myConnection.getResult();
     }
 
     public String getUserName() {
