@@ -92,7 +92,11 @@ public class FormMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonRegisterActionPerformed
 
     private void buttonLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLogInActionPerformed
-        // TODO add your handling code here:
+        //Register Button Code
+        this.setVisible(false);
+        //Register jFrame
+        FormLogIn formLogIn = new FormLogIn();
+        formLogIn.setVisible(true);
     }//GEN-LAST:event_buttonLogInActionPerformed
 
     /**

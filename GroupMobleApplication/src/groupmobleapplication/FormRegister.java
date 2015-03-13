@@ -125,12 +125,33 @@ public class FormRegister extends javax.swing.JFrame {
         String userName = textFieldUserName.getText();
         char[] password = passwordField.getPassword();
         char[] passwordConfirm = passwordFieldConfirm.getPassword();
-        boolean confirmed = validatePassword(password, passwordConfirm);
-        if (confirmed == true) {
-            //DBManager dbm = new DBManager();
+        boolean confirmedUN = validateUserName(userName);
+        if (!confirmedUN) {
+            JOptionPane.showMessageDialog(this,
+                    "Somebody already has this username.",
+                    "Invalid Username",
+                    JOptionPane.ERROR_MESSAGE);
         }
-        System.out.println(userName);
-        System.out.println(confirmed);
+        boolean confirmedPW = validatePassword(password, passwordConfirm);
+        if (confirmedPW && confirmedUN) {
+            //SQL Insert
+            DBManager dbm = new DBManager(userName, password);
+            boolean success = dbm.register();
+            if (success) {
+                System.out.println("Registration Successful");
+                //Register Button Code
+                this.setVisible(false);
+                //Register jFrame
+                FormGameMenu formGameMenu = new FormGameMenu();
+                formGameMenu.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(this,
+                        "Registration Failed.",
+                        "Registration Failed",
+                        JOptionPane.ERROR_MESSAGE);
+                System.out.println("Registration Failed");
+            }
+        }
     }//GEN-LAST:event_buttonSubmitActionPerformed
 
     /**
@@ -168,11 +189,14 @@ public class FormRegister extends javax.swing.JFrame {
         });
     }
 
-    private Boolean validateUsername(String username){
-        //Code
-        return false;
+    private Boolean validateUserName(String username) {
+        DBManager dbm = new DBManager(username);
+        if (!dbm.validateName()) { //False - Username Exists
+            return false;
+        }
+        return true;
     }
-    
+
     private Boolean validatePassword(char[] password, char[] passwordConfirm) {
         if (!Arrays.equals(password, passwordConfirm)) {
             JOptionPane.showMessageDialog(this,
