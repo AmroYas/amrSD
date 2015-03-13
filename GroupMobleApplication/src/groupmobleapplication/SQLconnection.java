@@ -117,8 +117,8 @@ public class SQLConnection {
         try { //Try to read the query
             while (queryRes.next()) // while there's still some more results of the query...
             {
-                String userLogIn = queryRes.getString(aColumn);
-                System.out.println("Log In: " + userLogIn); // CHANGE
+                String result = queryRes.getString(aColumn);
+                System.out.println(aColumn + " " + result);
             }
         } catch (SQLException e) {
             System.out.println("ERROR: Cannot execute query.");
