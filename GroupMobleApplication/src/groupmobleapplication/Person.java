@@ -12,30 +12,18 @@ package groupmobleapplication;
 public class Person {
 
     private String userName;
-    private String userPassword;
-    private Boolean authenticate;
+    private char rank;
+
+    public Person(String user, char u) {
+        userName = user;
+        rank = u;
+    }
 
     public String getUserName() {
         return userName;
     }
-
-    public String getUserPassword() {
-        return userPassword;
-    }
-
-    public void setAuthenticate() {
-        authenticate = true;
-    }
-
-    public Boolean getAuthenticate() {
-        return authenticate;
-    }
-
-    public void logIn(String name, String password) {
-        //Code
-    }
-
-    public void register(String name, String password) {
-        //Code
+    
+    public char getUserRank() {
+        return rank;
     }
 }

@@ -112,7 +112,7 @@ public class FormLogIn extends javax.swing.JFrame {
         Boolean success = dbm.logIn();
         if (!success) {
             JOptionPane.showMessageDialog(this,
-                    "Passwords entered is not correct.",
+                    "Password or Username entered is not correct.",
                     "Invalid Password",
                     JOptionPane.ERROR_MESSAGE);
             System.out.println("Failed LogIn");
@@ -123,6 +123,8 @@ public class FormLogIn extends javax.swing.JFrame {
             this.setVisible(false);
             //Register jFrame
             FormGameMenu formGameMenu = new FormGameMenu();
+            Person user = new Person (userName, dbm.getUserRank());
+            formGameMenu.setPerson(user);
             formGameMenu.setVisible(true);
         }
     }//GEN-LAST:event_buttonSubmitActionPerformed

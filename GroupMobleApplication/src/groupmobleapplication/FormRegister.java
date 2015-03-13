@@ -142,8 +142,8 @@ public class FormRegister extends javax.swing.JFrame {
                 //Register Button Code
                 this.setVisible(false);
                 //Register jFrame
-                FormGameMenu formGameMenu = new FormGameMenu();
-                formGameMenu.setVisible(true);
+                FormMenu formMenu = new FormMenu();
+                formMenu.setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(this,
                         "Registration Failed.",

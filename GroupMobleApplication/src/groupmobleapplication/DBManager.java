@@ -17,7 +17,6 @@ public class DBManager {
 
     private String userName;
     char[] password;
-    private String userPassword;
     private Boolean userAdmin;
     private Boolean authenticate;
     private double attemptScore;
@@ -100,16 +99,23 @@ public class DBManager {
         return true;
     }
 
+    public char getUserRank() {
+        String logInQuery = "SELECT userRank FROM users WHERE userName = '" + userName + "'";
+        myConnection.runQuery(logInQuery);
+        ResultSet result;
+        result = myConnection.getResult();
+        char userRank = 'u';
+        try { //Try to read the query Result Set
+            result.first(); //Move pointer to start
+            userRank = result.getString("userRank").charAt(0);
+        } catch (SQLException e) {
+            System.out.println("ERROR @getUserAdmin: Cannot execute read query.");
+        }
+        return userRank;
+    }
+
     public String getUserName() {
         return userName;
-    }
-
-    public String getUserPassword() {
-        return userPassword;
-    }
-
-    public Boolean getUserAdmin() {
-        return userAdmin;
     }
 
     public Boolean getAuthenticate() {

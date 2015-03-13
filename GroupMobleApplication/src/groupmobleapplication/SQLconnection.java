@@ -88,7 +88,7 @@ public class SQLConnection {
 
         try { //Try to run the query
             queryRes = stmt.executeQuery(aQuery);
-            System.out.println("Insert Successful");
+            System.out.println("Query Successful");
         } catch (SQLException e) {
             System.out.println("ERROR: Cannot execute query.");
         }
@@ -151,7 +151,7 @@ public class SQLConnection {
             while (queryRes.next()) // while there's still some more results of the query...
             {
                 String userLogIn = queryRes.getString(aColumn);
-                System.out.println("Log In: " + userLogIn);
+                System.out.println("Log In: " + userLogIn); // CHANGE
             }
         } catch (SQLException e) {
             System.out.println("ERROR: Cannot execute query.");
