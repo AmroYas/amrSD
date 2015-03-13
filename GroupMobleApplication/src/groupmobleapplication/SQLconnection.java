@@ -113,39 +113,6 @@ public class SQLConnection {
         return true;
     }
 
-    public void readQuery() {
-        //int n = 0;    //A counter for the output
-
-        //Test Query.
-        try { //Try to read the query
-            while (queryRes.next()) // while there's still some more results of the query...
-            {
-                String id = queryRes.getString("userId");
-                String firstName = queryRes.getString("userName");
-                String lastName = queryRes.getString("userPassword");
-
-                System.out.println("ID: " + id + ", USER name: " + firstName
-                        + ", Password: " + lastName);
-
-                /*
-                 int numColumns = queryRes.getMetaData().getColumnCount(); //Get how many cols in this entry
-                 //n++;
-                 //System.out.print("" + n);
-                 //Loop through the cols to print them
-                 //Column numbers start at 1.
-                 {
-                 for (int i = 1; i <= numColumns; i++) {
-                 System.out.print("  " + queryRes.getObject(i));
-                 }
-                 }
-                 System.out.println("");   //Print a new line at the end of the entry.
-                 */
-            }
-        } catch (SQLException e) {
-            System.out.println("ERROR: Cannot execute query.");
-        }
-    }
-
     public void readResult(String aColumn) {
         try { //Try to read the query
             while (queryRes.next()) // while there's still some more results of the query...

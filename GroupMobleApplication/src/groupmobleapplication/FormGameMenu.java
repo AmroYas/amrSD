@@ -33,6 +33,7 @@ public class FormGameMenu extends javax.swing.JFrame {
         labelUserName = new javax.swing.JLabel();
         buttonLeaderboard = new javax.swing.JButton();
         labelMathsQuiz1 = new javax.swing.JLabel();
+        buttonAdminCP = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -64,41 +65,46 @@ public class FormGameMenu extends javax.swing.JFrame {
         labelMathsQuiz1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelMathsQuiz1.setText("Maths Quiz");
 
+        buttonAdminCP.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        buttonAdminCP.setText("Admin Tools");
+        buttonAdminCP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAdminCPActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(169, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(buttonPlay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonLeaderboard, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))
-                .addGap(136, 136, 136))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(labelUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(179, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(169, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelMathsQuiz1)
-                    .addGap(126, 126, 126)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(buttonPlay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonLeaderboard, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                        .addComponent(buttonAdminCP, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)))
+                .addGap(136, 136, 136))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(labelUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(303, 303, 303)
+                .addGap(183, 183, 183)
+                .addComponent(labelMathsQuiz1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
                 .addComponent(buttonPlay, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(61, 61, 61)
                 .addComponent(buttonLeaderboard, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(261, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(249, 249, 249)
-                    .addComponent(labelMathsQuiz1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(467, Short.MAX_VALUE)))
+                .addGap(62, 62, 62)
+                .addComponent(buttonAdminCP, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(144, Short.MAX_VALUE))
         );
 
         pack();
@@ -122,7 +128,17 @@ public class FormGameMenu extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         labelUserName.setText(person.getUserName());
+        //Hide admin button if user
+        if (person.getUserRank() == 'u') {
+            buttonAdminCP.setVisible(false);
+        }
     }//GEN-LAST:event_formWindowOpened
+
+    private void buttonAdminCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdminCPActionPerformed
+        //Register jFrame
+        FormAdminCP formAdminCP = new FormAdminCP();
+        formAdminCP.setVisible(true);
+    }//GEN-LAST:event_buttonAdminCPActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,6 +176,7 @@ public class FormGameMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonAdminCP;
     private javax.swing.JButton buttonLeaderboard;
     private javax.swing.JButton buttonPlay;
     private javax.swing.JLabel labelMathsQuiz1;

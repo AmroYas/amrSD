@@ -17,8 +17,6 @@ public class DBManager {
 
     private String userName;
     char[] password;
-    private Boolean userAdmin;
-    private Boolean authenticate;
     private double attemptScore;
     private int attemptNumber;
 
@@ -31,6 +29,10 @@ public class DBManager {
 
     public DBManager(String name) {
         userName = name;
+    }
+
+    public DBManager() {
+
     }
 
     public Boolean logIn() {
@@ -58,17 +60,6 @@ public class DBManager {
         return false;
     }
 
-    public int getPasswordLength(ResultSet result) {
-        int passwordLength = 0;
-        try { //Try to read the query Result Set
-            result.first();
-            passwordLength = result.getString("userPassword").length();
-        } catch (SQLException e) {
-            System.out.println("ERROR @getPasswordLength: Cannot execute read query.");
-        }
-        return passwordLength;
-    }
-
     public Boolean register() {
         String strPassword = "";
         for (int i = 0; i < password.length; i++) {
@@ -79,6 +70,37 @@ public class DBManager {
         strPassword = "0";
         boolean success = myConnection.runUpdate(registerQuery);
         return success;
+    }
+
+    public void adminReadDB() {
+        String selectAll = "SELECT userId, userName, userRank FROM users";
+        myConnection.runQuery(selectAll);
+        ResultSet result;
+        result = myConnection.getResult();
+        try { //Try to read the query Result Set
+            while (result.next()) // while there's still some more results of the query...
+            {
+                String userId = result.getString("userId");
+                String userName = result.getString("userName");
+                String userRank = result.getString("userRank");
+
+                System.out.println("ID: " + userId + ", userName: " + userName
+                        + ", Rank: " + userRank);
+            }
+        } catch (SQLException e) {
+            System.out.println("ERROR @adminReadDB: Cannot execute query.");
+        }
+    }
+
+    public int getPasswordLength(ResultSet result) {
+        int passwordLength = 0;
+        try { //Try to read the query Result Set
+            result.first();
+            passwordLength = result.getString("userPassword").length();
+        } catch (SQLException e) {
+            System.out.println("ERROR @getPasswordLength: Cannot execute read query.");
+        }
+        return passwordLength;
     }
 
     public Boolean validateName() {
@@ -118,24 +140,12 @@ public class DBManager {
         return userName;
     }
 
-    public Boolean getAuthenticate() {
-        return authenticate;
-    }
-
-    public void setAuthenticate() {
-        authenticate = true;
-    }
-
     public double getAttemptScore() {
         return attemptScore;
     }
 
     public int getAttemptNumber() {
         return attemptNumber;
-    }
-
-    public void newEntry(String name, String password) {
-        //Code
     }
 
     public void addAttemptScore(double attemptScore, int attemptNumber) {
