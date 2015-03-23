@@ -115,15 +115,17 @@ public class FormGameMenu extends javax.swing.JFrame {
     }
 
     private void buttonPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPlayActionPerformed
-        //Register Button Code
-        //this.setVisible(false);
-        //Register jFrame
+        //Play Button Code
+        this.setVisible(false);
+        //Play jFrame
+        FormPlay formPlay = new FormPlay();
+        formPlay.setVisible(true);
     }//GEN-LAST:event_buttonPlayActionPerformed
 
     private void buttonLeaderboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLeaderboardActionPerformed
-        //Register Button Code
+        //LeaderBoard Button Code
         //this.setVisible(false);
-        //Register jFrame
+        //LeaderBoard jFrame
     }//GEN-LAST:event_buttonLeaderboardActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
