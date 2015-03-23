@@ -5,6 +5,9 @@
  */
 package groupmobleapplication;
 
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Dennis
@@ -116,9 +119,23 @@ public class FormGameMenu extends javax.swing.JFrame {
 
     private void buttonPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPlayActionPerformed
         //Play Button Code
+        Object[] possibilities = {"Novice", "Easy", "Medium", "Professional"};
+        ImageIcon icon = new ImageIcon();
+        String userInput = (String) JOptionPane.showInputDialog(this, "Choose Your Difficulty:\n", "Choose Difficulty", JOptionPane.QUESTION_MESSAGE, icon, possibilities, "Novice");
+        int difficulty = 0;
+        if (userInput.equals("Novice")) {
+            difficulty = 0;
+        } else if (userInput.equals("Easy")) {
+            difficulty = 1;
+        } else if (userInput.equals("Medium")) {
+            difficulty = 2;
+        } else if (userInput.equals("Professional")) {
+            difficulty = 3;
+        }
         this.setVisible(false);
         //Play jFrame
         FormPlay formPlay = new FormPlay();
+        formPlay.setDifficulty(difficulty);
         formPlay.setVisible(true);
     }//GEN-LAST:event_buttonPlayActionPerformed
 

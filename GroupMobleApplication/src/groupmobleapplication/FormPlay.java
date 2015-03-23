@@ -13,9 +13,12 @@ import java.util.Random;
  */
 public class FormPlay extends javax.swing.JFrame {
 
-    private int numberOfQuestions = 10;
-    private Question[] questions = new Question[numberOfQuestions];
     private Random rand = new Random(); // rand.nextInt((max - min) + 1) + min;
+
+    private int chosenDifficulty = 0;
+    private final int numberOfQuestions = 10;
+    private Score playerScore = new Score(chosenDifficulty);
+    private Question[] questions = new Question[numberOfQuestions];
 
     /**
      * Creates new form FormPlay
@@ -142,7 +145,7 @@ public class FormPlay extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         for (int i = 0; i < numberOfQuestions; i++) {
-            questions[i] = new Question(1);
+            questions[i] = new Question(chosenDifficulty);
         }
 
         String theQuestion = "What is " + questions[0].getQuestion() + " ?";
@@ -190,6 +193,10 @@ public class FormPlay extends javax.swing.JFrame {
                 break;
         }
     }//GEN-LAST:event_formWindowOpened
+
+    public void setDifficulty(int i) {
+        chosenDifficulty = i;
+    }
 
     /**
      * @param args the command line arguments
