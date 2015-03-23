@@ -5,8 +5,6 @@
  */
 package groupmobleapplication;
 
-import java.util.Arrays;
-
 /**
  *
  * @author Dennis I, Yasir Y, Rabia A, Jurjis L, Mohammed R, Richmond Adjei
