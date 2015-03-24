@@ -16,7 +16,7 @@ import java.util.Arrays;
 public class DBManager {
 
     private String userName;
-    char[] password;
+    private char[] password;
     private double attemptScore;
     private int attemptNumber;
 

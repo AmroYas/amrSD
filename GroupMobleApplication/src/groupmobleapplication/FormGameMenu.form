@@ -34,7 +34,7 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace pref="169" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="labelMathsQuiz1" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelMathsQuiz" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Component id="buttonPlay" alignment="1" max="32767" attributes="0"/>
                       <Component id="buttonLeaderboard" alignment="0" pref="175" max="32767" attributes="0"/>
@@ -51,7 +51,7 @@
               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               <Component id="labelUserName" min="-2" pref="43" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="183" max="-2" attributes="0"/>
-              <Component id="labelMathsQuiz1" min="-2" pref="84" max="-2" attributes="0"/>
+              <Component id="labelMathsQuiz" min="-2" pref="84" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               <Component id="buttonPlay" min="-2" pref="55" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
@@ -94,7 +94,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonLeaderboardActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="labelMathsQuiz1">
+    <Component class="javax.swing.JLabel" name="labelMathsQuiz">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="36" style="0"/>

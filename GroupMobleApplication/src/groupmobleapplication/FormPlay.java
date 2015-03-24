@@ -19,6 +19,7 @@ public class FormPlay extends javax.swing.JFrame {
     private final int numberOfQuestions = 10;
     private int questionNo = 0;
     private Score playerScore;
+    private Person person;
     private Question[] questions = new Question[numberOfQuestions];
 
     /**
@@ -145,7 +146,7 @@ public class FormPlay extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         playerScore = new Score(chosenDifficulty);
-        
+
         for (int i = 0; i < numberOfQuestions; i++) {
             questions[i] = new Question(chosenDifficulty);
         }
@@ -157,6 +158,10 @@ public class FormPlay extends javax.swing.JFrame {
 
     public void setDifficulty(int i) {
         chosenDifficulty = i;
+    }
+
+    public void setPerson(Person aPerson) {
+        person = aPerson;
     }
 
     private String getQuestionTitle() {
@@ -229,7 +234,11 @@ public class FormPlay extends javax.swing.JFrame {
         } else {
             System.out.println("Congrats");
             //New Congratulations(Showing Score) Frame
-            dispose();
+            this.setVisible(false);
+            FormGameOver formGameOver = new FormGameOver();
+            formGameOver.setPerson(person);
+            formGameOver.setScore(playerScore);
+            formGameOver.setVisible(true);
         }
     }
 

@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class FormGameMenu extends javax.swing.JFrame {
 
-    Person person = new Person("default", 'u');
+    private Person person = new Person("default", 'u');
 
     /**
      * Creates new form FormGameMenu
@@ -35,7 +35,7 @@ public class FormGameMenu extends javax.swing.JFrame {
         buttonPlay = new javax.swing.JButton();
         labelUserName = new javax.swing.JLabel();
         buttonLeaderboard = new javax.swing.JButton();
-        labelMathsQuiz1 = new javax.swing.JLabel();
+        labelMathsQuiz = new javax.swing.JLabel();
         buttonAdminCP = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -64,9 +64,9 @@ public class FormGameMenu extends javax.swing.JFrame {
             }
         });
 
-        labelMathsQuiz1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        labelMathsQuiz1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelMathsQuiz1.setText("Maths Quiz");
+        labelMathsQuiz.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        labelMathsQuiz.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelMathsQuiz.setText("Maths Quiz");
 
         buttonAdminCP.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         buttonAdminCP.setText("Admin Tools");
@@ -87,7 +87,7 @@ public class FormGameMenu extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(169, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelMathsQuiz1)
+                    .addComponent(labelMathsQuiz)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(buttonPlay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(buttonLeaderboard, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
@@ -100,7 +100,7 @@ public class FormGameMenu extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addComponent(labelUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(183, 183, 183)
-                .addComponent(labelMathsQuiz1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelMathsQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
                 .addComponent(buttonPlay, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(61, 61, 61)
@@ -135,6 +135,7 @@ public class FormGameMenu extends javax.swing.JFrame {
         this.setVisible(false);
         //Play jFrame
         FormPlay formPlay = new FormPlay();
+        formPlay.setPerson(person);
         formPlay.setDifficulty(difficulty);
         formPlay.setVisible(true);
     }//GEN-LAST:event_buttonPlayActionPerformed
@@ -198,7 +199,7 @@ public class FormGameMenu extends javax.swing.JFrame {
     private javax.swing.JButton buttonAdminCP;
     private javax.swing.JButton buttonLeaderboard;
     private javax.swing.JButton buttonPlay;
-    private javax.swing.JLabel labelMathsQuiz1;
+    private javax.swing.JLabel labelMathsQuiz;
     private javax.swing.JLabel labelUserName;
     // End of variables declaration//GEN-END:variables
 }
