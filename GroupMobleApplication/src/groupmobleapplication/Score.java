@@ -22,19 +22,20 @@ public class Score {
         return score;
     }
 
-    public void addPoints() {
+    public void addPoints(long timeLeft) {
+        int timeLeftInt = (int) timeLeft / 1000;
         switch (difficulty) {
             case 0:
-                score += 10;
+                score += (10 + timeLeftInt);
                 break;
             case 1:
-                score += 25;
+                score += (25 + timeLeftInt);
                 break;
             case 2:
-                score += 50;
+                score += (50 + timeLeftInt);
                 break;
             case 3:
-                score += 100;
+                score += (100 + timeLeftInt);
                 break;
         }
     }

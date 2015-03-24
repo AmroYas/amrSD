@@ -263,7 +263,7 @@ public class FormPlay extends javax.swing.JFrame {
     private void checkAnswer(String buttonAnswer) {
         if (buttonAnswer.equals(questions[questionNo].getAnswer())) {
             System.out.println("Correct");
-            playerScore.addPoints();
+            playerScore.addPoints(secondsLeft);
             System.out.println("User Score: " + playerScore.getScore());
             System.out.println(" ");
             advanceQuestion();
