@@ -6,6 +6,8 @@
 package groupmobleapplication;
 
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  *
@@ -14,7 +16,10 @@ import java.util.Random;
 public class FormPlay extends javax.swing.JFrame {
 
     private Random rand = new Random(); // rand.nextInt((max - min) + 1) + min;
-    
+    private Timer timer = new Timer();
+
+    private long secondsDifficulty = 10000;
+    private long secondsLeft = secondsDifficulty;
     private int chosenDifficulty = 0;
     private final int numberOfQuestions = 10;
     private int progressBarVal = 10;
@@ -39,7 +44,7 @@ public class FormPlay extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        labelMathsQuiz = new javax.swing.JLabel();
+        labelTimer = new javax.swing.JLabel();
         labelQuestion = new javax.swing.JLabel();
         buttonAnswer1 = new javax.swing.JButton();
         buttonAnswer2 = new javax.swing.JButton();
@@ -54,11 +59,11 @@ public class FormPlay extends javax.swing.JFrame {
             }
         });
 
-        labelMathsQuiz.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        labelMathsQuiz.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelMathsQuiz.setText("Maths Quiz");
+        labelTimer.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        labelTimer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelTimer.setText("Time Left: ");
 
-        labelQuestion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        labelQuestion.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         labelQuestion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelQuestion.setText("Question");
 
@@ -98,39 +103,35 @@ public class FormPlay extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labelQuestion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(progressBarQuiz, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(157, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(buttonAnswer1, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                            .addComponent(buttonAnswer2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonAnswer3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonAnswer4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(143, 143, 143))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(labelMathsQuiz)
-                        .addGap(148, 148, 148))))
+                .addContainerGap(162, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(buttonAnswer1, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                    .addComponent(buttonAnswer2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonAnswer3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonAnswer4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(143, 143, 143))
+            .addComponent(labelTimer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(labelQuestion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(progressBarQuiz, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
-                .addGap(27, 27, 27)
-                .addComponent(labelMathsQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
+                .addGap(1, 1, 1)
+                .addComponent(labelTimer, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(156, 156, 156)
+                .addGap(116, 116, 116)
                 .addComponent(buttonAnswer1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
+                .addGap(47, 47, 47)
                 .addComponent(buttonAnswer2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
+                .addGap(54, 54, 54)
                 .addComponent(buttonAnswer3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
+                .addGap(55, 55, 55)
                 .addComponent(buttonAnswer4, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
 
         pack();
@@ -153,6 +154,27 @@ public class FormPlay extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonAnswer4ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        initialise();
+        labelQuestion.setText(getQuestionTitle());
+        setRandomButton();
+        setChosenButton();
+
+        // New timer to countdown
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                secondsLeft -= 1000;
+                int timeLeft = (int) secondsLeft / 1000;
+                labelTimer.setText("Time Left: " + Integer.toString(timeLeft));
+                if (secondsLeft == 0) {
+                    secondsLeft = secondsDifficulty;
+                    checkAnswer("invalid");
+                }
+            }
+        }, 1000, 1000); //Delay 1 seconds, run every 1 second afterwards
+    }//GEN-LAST:event_formWindowOpened
+
+    private void initialise() {
         playerScore = new Score(chosenDifficulty);
         progressBarQuiz.setValue(progressBarVal);
 
@@ -160,10 +182,28 @@ public class FormPlay extends javax.swing.JFrame {
             questions[i] = new Question(chosenDifficulty);
         }
 
-        labelQuestion.setText(getQuestionTitle());
-        setRandomButton();
-        setChosenButton();
-    }//GEN-LAST:event_formWindowOpened
+        switch (chosenDifficulty) {
+            case 0:
+                secondsDifficulty = 10000; //10 Seconds
+                secondsLeft = secondsDifficulty;
+                break;
+            case 1:
+                secondsDifficulty = 15000; //15 Seconds
+                secondsLeft = secondsDifficulty;
+                break;
+            case 2:
+                secondsDifficulty = 20000; //20 Seconds
+                secondsLeft = secondsDifficulty;
+                break;
+            case 3:
+                secondsDifficulty = 30000; //30 Seconds
+                secondsLeft = secondsDifficulty;
+                break;
+        }
+
+        int timeLeft = (int) secondsLeft / 1000;
+        labelTimer.setText("Time Left: " + Integer.toString(timeLeft));
+    }
 
     public void setDifficulty(int i) {
         chosenDifficulty = i;
@@ -237,6 +277,7 @@ public class FormPlay extends javax.swing.JFrame {
     private void advanceQuestion() {
         questionNo++;
         progressBarVal += 10;
+        secondsLeft = secondsDifficulty;
         if (questionNo < 9) {
             progressBarQuiz.setValue(progressBarVal);
             labelQuestion.setText(getQuestionTitle());
@@ -245,6 +286,7 @@ public class FormPlay extends javax.swing.JFrame {
         } else {
             System.out.println("Congrats");
             //New Congratulations(Showing Score) Frame
+            timer.cancel();
             this.setVisible(false);
             FormGameOver formGameOver = new FormGameOver();
             formGameOver.setPerson(person);
@@ -293,8 +335,8 @@ public class FormPlay extends javax.swing.JFrame {
     private javax.swing.JButton buttonAnswer2;
     private javax.swing.JButton buttonAnswer3;
     private javax.swing.JButton buttonAnswer4;
-    private javax.swing.JLabel labelMathsQuiz;
     private javax.swing.JLabel labelQuestion;
+    private javax.swing.JLabel labelTimer;
     private javax.swing.JProgressBar progressBarQuiz;
     // End of variables declaration//GEN-END:variables
 }
