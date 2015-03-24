@@ -26,26 +26,35 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="162" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                  <Component id="buttonAnswer1" alignment="1" max="32767" attributes="0"/>
-                  <Component id="labelMathsQuiz" alignment="0" max="32767" attributes="0"/>
-                  <Component id="buttonAnswer2" alignment="1" max="32767" attributes="0"/>
-                  <Component id="buttonAnswer3" alignment="0" max="32767" attributes="0"/>
-                  <Component id="buttonAnswer4" alignment="1" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="143" max="-2" attributes="0"/>
-          </Group>
           <Component id="labelQuestion" alignment="0" max="32767" attributes="0"/>
+          <Component id="progressBarQuiz" alignment="0" max="32767" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="157" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="buttonAnswer1" alignment="1" pref="175" max="32767" attributes="0"/>
+                          <Component id="buttonAnswer2" alignment="1" max="32767" attributes="0"/>
+                          <Component id="buttonAnswer3" alignment="0" max="32767" attributes="0"/>
+                          <Component id="buttonAnswer4" alignment="1" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="143" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="labelMathsQuiz" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+              <Component id="progressBarQuiz" pref="42" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Component id="labelMathsQuiz" min="-2" pref="84" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
               <Component id="labelQuestion" min="-2" pref="84" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
               <Component id="buttonAnswer1" min="-2" pref="55" max="-2" attributes="0"/>
@@ -55,7 +64,7 @@
               <Component id="buttonAnswer3" min="-2" pref="55" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
               <Component id="buttonAnswer4" min="-2" pref="55" max="-2" attributes="0"/>
-              <EmptySpace pref="47" max="32767" attributes="0"/>
+              <EmptySpace pref="18" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -122,6 +131,8 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAnswer4ActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JProgressBar" name="progressBarQuiz">
     </Component>
   </SubComponents>
 </Form>

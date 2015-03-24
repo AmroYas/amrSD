@@ -54,7 +54,7 @@ public class FormGameOver extends javax.swing.JFrame {
 
         labelScore.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         labelScore.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelScore.setText("Your score is:");
+        labelScore.setText("Your score is: ");
 
         buttonMainMenu.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         buttonMainMenu.setText("Main Menu");
