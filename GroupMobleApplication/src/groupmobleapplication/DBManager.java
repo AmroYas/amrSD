@@ -101,6 +101,29 @@ public class DBManager {
         return passwordLength;
     }
 
+    public void getFullLeaderBoard(ResultSet result) {
+        int place = 0;
+        // variable to contain the query result
+        String query = "SELECT users.userName, scores.score FROM users NATURAL JOIN scores ORDER  BY scores.score DESC ";
+    
+        runQuery(query);// try to run the query
+        try {
+
+            while (result.next()) // while there's still some more results of the query...
+            {
+                place++;
+                // String userId = result.getString("users.userID");
+                String userName = result.getString("users.userName");
+                String userScore = result.getString("scores.score");
+
+                System.out.println(place + "      " + userName + "   " + userScore);
+            }
+        } catch (SQLException e) {
+            System.out.println("ERROR @adminReadDB: Cannot execute query.");
+
+        }
+    }
+
     public Boolean validateName() {
         String validateName = "SELECT * FROM users WHERE userName = '" + userName + "'";
         runQuery(validateName);
