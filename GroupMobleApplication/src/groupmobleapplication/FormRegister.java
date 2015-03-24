@@ -5,6 +5,7 @@
  */
 package groupmobleapplication;
 
+import java.awt.Color;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
 
@@ -30,7 +31,6 @@ public class FormRegister extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        labelRegister = new javax.swing.JLabel();
         labelUserName = new javax.swing.JLabel();
         textFieldUserName = new javax.swing.JTextField();
         labelPassword = new javax.swing.JLabel();
@@ -39,26 +39,39 @@ public class FormRegister extends javax.swing.JFrame {
         passwordFieldConfirm = new javax.swing.JPasswordField();
         buttonSubmit = new javax.swing.JButton();
         buttonBack = new javax.swing.JButton();
+        labelMathsQuiz = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(480, 800));
+        setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
-        labelRegister.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        labelRegister.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelRegister.setText("Register");
-
-        labelUserName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        labelUserName.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+        labelUserName.setForeground(new java.awt.Color(255, 255, 255));
         labelUserName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelUserName.setText("Username:");
 
-        labelPassword.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        textFieldUserName.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+
+        labelPassword.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+        labelPassword.setForeground(new java.awt.Color(255, 255, 255));
         labelPassword.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelPassword.setText("Password:");
 
-        labelPasswordConfirm.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        passwordField.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+
+        labelPasswordConfirm.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+        labelPasswordConfirm.setForeground(new java.awt.Color(255, 255, 255));
         labelPasswordConfirm.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelPasswordConfirm.setText("Confirm Password:");
 
-        buttonSubmit.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        passwordFieldConfirm.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+
+        buttonSubmit.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
         buttonSubmit.setText("Submit");
         buttonSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,7 +79,7 @@ public class FormRegister extends javax.swing.JFrame {
             }
         });
 
-        buttonBack.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        buttonBack.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
         buttonBack.setText("Back");
         buttonBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,60 +87,59 @@ public class FormRegister extends javax.swing.JFrame {
             }
         });
 
+        labelMathsQuiz.setIcon(new javax.swing.ImageIcon(getClass().getResource("/groupmobleapplication/logo.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(buttonBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buttonSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(86, 86, 86))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(labelUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(textFieldUserName))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(labelPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(labelPasswordConfirm)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(labelUserName)
+                            .addComponent(labelPasswordConfirm)
+                            .addComponent(labelPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(passwordFieldConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 41, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(passwordFieldConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textFieldUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 56, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buttonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(52, 52, 52))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelMathsQuiz)
+                .addGap(80, 80, 80))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(labelRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(86, 86, 86)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(labelUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                    .addComponent(textFieldUserName))
-                .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(passwordField)
-                    .addComponent(labelPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
-                .addGap(49, 49, 49)
+                .addGap(51, 51, 51)
+                .addComponent(labelMathsQuiz)
+                .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelPasswordConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(passwordFieldConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(76, 76, 76)
+                    .addComponent(textFieldUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(passwordFieldConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelPasswordConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(65, 65, 65)
                 .addComponent(buttonSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addGap(50, 50, 50)
                 .addComponent(buttonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(188, Short.MAX_VALUE))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
 
         pack();
@@ -174,6 +186,10 @@ public class FormRegister extends javax.swing.JFrame {
         FormMenu formMenu = new FormMenu();
         formMenu.setVisible(true);
     }//GEN-LAST:event_buttonBackActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        getContentPane().setBackground(Color.darkGray);
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -239,9 +255,9 @@ public class FormRegister extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonBack;
     private javax.swing.JButton buttonSubmit;
+    private javax.swing.JLabel labelMathsQuiz;
     private javax.swing.JLabel labelPassword;
     private javax.swing.JLabel labelPasswordConfirm;
-    private javax.swing.JLabel labelRegister;
     private javax.swing.JLabel labelUserName;
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JPasswordField passwordFieldConfirm;

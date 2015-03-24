@@ -5,7 +5,7 @@
  */
 package groupmobleapplication;
 
-import javax.swing.JOptionPane;
+import java.awt.Color;
 
 /**
  *
@@ -38,21 +38,22 @@ public class FormGameOver extends javax.swing.JFrame {
         buttonMainMenu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
 
-        labelMathsQuiz.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        labelMathsQuiz.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelMathsQuiz.setText("Maths Quiz");
+        labelMathsQuiz.setIcon(new javax.swing.ImageIcon(getClass().getResource("/groupmobleapplication/logo.png"))); // NOI18N
 
         labelCongrats.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
+        labelCongrats.setForeground(new java.awt.Color(255, 255, 255));
         labelCongrats.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelCongrats.setText("Congratulations: ");
 
         labelScore.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        labelScore.setForeground(new java.awt.Color(255, 255, 255));
         labelScore.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelScore.setText("Your score is: ");
 
@@ -68,32 +69,30 @@ public class FormGameOver extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(155, 155, 155)
-                .addComponent(buttonMainMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                .addGap(150, 150, 150))
+            .addComponent(labelCongrats, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(labelScore, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(163, Short.MAX_VALUE)
-                .addComponent(labelMathsQuiz)
-                .addGap(142, 142, 142))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addComponent(labelScore)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(labelCongrats, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(108, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(labelMathsQuiz)
+                        .addGap(87, 87, 87))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(buttonMainMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(85, 85, 85))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(118, 118, 118)
-                .addComponent(labelMathsQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(labelCongrats, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63)
-                .addComponent(labelScore, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                .addGap(45, 45, 45)
+                .addComponent(labelMathsQuiz)
+                .addGap(18, 18, 18)
+                .addComponent(labelCongrats, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(labelScore, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(71, 71, 71)
                 .addComponent(buttonMainMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(189, 189, 189))
+                .addContainerGap(166, Short.MAX_VALUE))
         );
 
         pack();
@@ -101,13 +100,14 @@ public class FormGameOver extends javax.swing.JFrame {
 
     private void buttonMainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMainMenuActionPerformed
         this.setVisible(false);
-        //Register jFrame
+        //Main Menu jFrame
         FormGameMenu formGameMenu = new FormGameMenu();
         formGameMenu.setPerson(person);
         formGameMenu.setVisible(true);
     }//GEN-LAST:event_buttonMainMenuActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        getContentPane().setBackground(Color.darkGray);
         String congrats = labelCongrats.getText() + person.getUserName();
         labelCongrats.setText(congrats);
         String score = labelScore.getText() + Integer.toString(playerScore.getScore());

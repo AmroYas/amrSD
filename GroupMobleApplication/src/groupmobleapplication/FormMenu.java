@@ -5,6 +5,8 @@
  */
 package groupmobleapplication;
 
+import java.awt.Color;
+
 /**
  *
  * @author Dennis
@@ -32,21 +34,28 @@ public class FormMenu extends javax.swing.JFrame {
         buttonRegister = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 0, 0));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
-        labelMathsQuiz.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        labelMathsQuiz.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelMathsQuiz.setText("Maths Quiz");
+        labelMathsQuiz.setIcon(new javax.swing.ImageIcon(getClass().getResource("/groupmobleapplication/logo.png"))); // NOI18N
 
-        buttonLogIn.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        buttonLogIn.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
         buttonLogIn.setText("Log In");
+        buttonLogIn.setMaximumSize(new java.awt.Dimension(119, 37));
+        buttonLogIn.setMinimumSize(new java.awt.Dimension(119, 37));
         buttonLogIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonLogInActionPerformed(evt);
             }
         });
 
-        buttonRegister.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        buttonRegister.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
         buttonRegister.setText("Register");
         buttonRegister.setToolTipText("");
         buttonRegister.addActionListener(new java.awt.event.ActionListener() {
@@ -60,23 +69,23 @@ public class FormMenu extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(141, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(buttonLogIn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonRegister, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
-                    .addComponent(labelMathsQuiz, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(106, 106, 106))
+                .addContainerGap(107, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(buttonRegister, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelMathsQuiz, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonLogIn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(88, 88, 88))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addComponent(labelMathsQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(96, 96, 96)
-                .addComponent(buttonLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67)
-                .addComponent(buttonRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(368, Short.MAX_VALUE))
+                .addGap(60, 60, 60)
+                .addComponent(labelMathsQuiz)
+                .addGap(42, 42, 42)
+                .addComponent(buttonLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
+                .addComponent(buttonRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(210, Short.MAX_VALUE))
         );
 
         pack();
@@ -97,6 +106,10 @@ public class FormMenu extends javax.swing.JFrame {
         FormLogIn formLogIn = new FormLogIn();
         formLogIn.setVisible(true);
     }//GEN-LAST:event_buttonLogInActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        getContentPane().setBackground(Color.darkGray);
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

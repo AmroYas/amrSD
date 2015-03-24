@@ -5,6 +5,7 @@
  */
 package groupmobleapplication;
 
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -37,20 +38,40 @@ public class FormLogIn extends javax.swing.JFrame {
         buttonSubmit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
-        labelMathsQuiz.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        labelMathsQuiz.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelMathsQuiz.setText("Maths Quiz");
+        labelMathsQuiz.setIcon(new javax.swing.ImageIcon(getClass().getResource("/groupmobleapplication/logo.png"))); // NOI18N
 
-        labelUserName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        labelUserName.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+        labelUserName.setForeground(new java.awt.Color(255, 255, 255));
         labelUserName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelUserName.setText("Username:");
 
-        labelPassword.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        textFieldUserName.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+        textFieldUserName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldUserNameActionPerformed(evt);
+            }
+        });
+
+        labelPassword.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+        labelPassword.setForeground(new java.awt.Color(255, 255, 255));
         labelPassword.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelPassword.setText("Password:");
 
-        buttonSubmit.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        passwordField.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+        passwordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordFieldActionPerformed(evt);
+            }
+        });
+
+        buttonSubmit.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
         buttonSubmit.setText("Submit");
         buttonSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,42 +84,40 @@ public class FormLogIn extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(69, Short.MAX_VALUE)
+                .addContainerGap(80, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(labelUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(textFieldUserName))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(labelPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(82, 82, 82))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(buttonSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(labelPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(labelUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(textFieldUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
+                            .addComponent(passwordField))
                         .addGap(57, 57, 57))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(labelMathsQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32))))
+                        .addComponent(labelMathsQuiz)
+                        .addGap(85, 85, 85))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(buttonSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(88, 88, 88))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(labelMathsQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(89, 89, 89)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(labelUserName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(textFieldUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(passwordField)
-                    .addComponent(labelPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(76, 76, 76)
+                .addGap(57, 57, 57)
+                .addComponent(labelMathsQuiz)
+                .addGap(77, 77, 77)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textFieldUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelUserName))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(116, 116, 116)
                 .addComponent(buttonSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(328, Short.MAX_VALUE))
+                .addGap(172, 172, 172))
         );
 
         pack();
@@ -108,26 +127,46 @@ public class FormLogIn extends javax.swing.JFrame {
         //Submit Button Code
         String userName = textFieldUserName.getText();
         char[] password = passwordField.getPassword();
-        DBManager dbm = new DBManager(userName, password);
-        Boolean success = dbm.logIn();
-        if (!success) {
+        if (userName.equals("")) {
             JOptionPane.showMessageDialog(this,
-                    "Password or Username entered is not correct.",
+                    "Username entered is not correct.",
                     "Invalid Password",
                     JOptionPane.ERROR_MESSAGE);
             System.out.println("Failed LogIn");
         } else {
-            System.out.println("Successful LogIn");
-            System.out.println(userName);
-            //Register Button Code
-            this.setVisible(false);
-            //Register jFrame
-            FormGameMenu formGameMenu = new FormGameMenu();
-            Person user = new Person (userName, dbm.getUserRank());
-            formGameMenu.setPerson(user);
-            formGameMenu.setVisible(true);
+            DBManager dbm = new DBManager(userName, password);
+            Boolean success = dbm.logIn();
+            if (!success) {
+                JOptionPane.showMessageDialog(this,
+                        "Password or Username entered is not correct.",
+                        "Invalid Password",
+                        JOptionPane.ERROR_MESSAGE);
+                System.out.println("Failed LogIn");
+            } else {
+                System.out.println("Successful LogIn");
+                System.out.println(userName);
+                this.setVisible(false);
+                //Game Menu jFrame
+                FormGameMenu formGameMenu = new FormGameMenu();
+                Person user = new Person(userName, dbm.getUserRank());
+                formGameMenu.setPerson(user);
+                formGameMenu.setVisible(true);
+            }
         }
+
     }//GEN-LAST:event_buttonSubmitActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        getContentPane().setBackground(Color.darkGray);
+    }//GEN-LAST:event_formWindowOpened
+
+    private void textFieldUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldUserNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldUserNameActionPerformed
+
+    private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordFieldActionPerformed
 
     /**
      * @param args the command line arguments

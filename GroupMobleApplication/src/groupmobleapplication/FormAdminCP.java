@@ -5,6 +5,8 @@
  */
 package groupmobleapplication;
 
+import java.awt.Color;
+
 /**
  *
  * @author Dennis
@@ -27,18 +29,28 @@ public class FormAdminCP extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        labelMathsQuiz = new javax.swing.JLabel();
         labelAdminCP = new javax.swing.JLabel();
         buttonPrintDB = new javax.swing.JButton();
         buttonAddAdmin = new javax.swing.JButton();
         buttonGetPassword = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
-        labelAdminCP.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        labelMathsQuiz.setIcon(new javax.swing.ImageIcon(getClass().getResource("/groupmobleapplication/logo.png"))); // NOI18N
+
+        labelAdminCP.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
+        labelAdminCP.setForeground(new java.awt.Color(255, 255, 255));
         labelAdminCP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelAdminCP.setText("Admin CP");
+        labelAdminCP.setText("Admin Control Panel");
 
-        buttonPrintDB.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        buttonPrintDB.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
         buttonPrintDB.setText("printUserList");
         buttonPrintDB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -46,7 +58,7 @@ public class FormAdminCP extends javax.swing.JFrame {
             }
         });
 
-        buttonAddAdmin.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        buttonAddAdmin.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
         buttonAddAdmin.setText("addAdmin");
         buttonAddAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -54,7 +66,7 @@ public class FormAdminCP extends javax.swing.JFrame {
             }
         });
 
-        buttonGetPassword.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        buttonGetPassword.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
         buttonGetPassword.setText("getPassword");
         buttonGetPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,26 +79,33 @@ public class FormAdminCP extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(155, 155, 155)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(labelAdminCP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonPrintDB, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
-                    .addComponent(buttonAddAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
-                    .addComponent(buttonGetPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE))
-                .addGap(141, 141, 141))
+                .addContainerGap(99, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(labelMathsQuiz)
+                        .addGap(96, 96, 96))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(buttonAddAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buttonGetPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
+                            .addComponent(buttonPrintDB, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(85, 85, 85))))
+            .addComponent(labelAdminCP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addComponent(labelAdminCP, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(buttonPrintDB, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49)
+                .addComponent(labelMathsQuiz)
                 .addGap(18, 18, 18)
+                .addComponent(labelAdminCP, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(buttonPrintDB, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
                 .addComponent(buttonAddAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(50, 50, 50)
                 .addComponent(buttonGetPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(415, Short.MAX_VALUE))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
 
         pack();
@@ -107,6 +126,10 @@ public class FormAdminCP extends javax.swing.JFrame {
         //Enter username
         //Recieve password
     }//GEN-LAST:event_buttonGetPasswordActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        getContentPane().setBackground(Color.darkGray);
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -148,5 +171,6 @@ public class FormAdminCP extends javax.swing.JFrame {
     private javax.swing.JButton buttonGetPassword;
     private javax.swing.JButton buttonPrintDB;
     private javax.swing.JLabel labelAdminCP;
+    private javax.swing.JLabel labelMathsQuiz;
     // End of variables declaration//GEN-END:variables
 }

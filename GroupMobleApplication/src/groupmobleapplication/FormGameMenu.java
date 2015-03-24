@@ -5,6 +5,7 @@
  */
 package groupmobleapplication;
 
+import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -39,28 +40,30 @@ public class FormGameMenu extends javax.swing.JFrame {
         buttonAdminCP = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
 
-        labelMathsQuiz.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        labelMathsQuiz.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelMathsQuiz.setText("Maths Quiz");
+        labelMathsQuiz.setIcon(new javax.swing.ImageIcon(getClass().getResource("/groupmobleapplication/logo.png"))); // NOI18N
 
-        labelUserName.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        labelUserName.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        labelUserName.setForeground(new java.awt.Color(255, 255, 255));
         labelUserName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        buttonPlay.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        buttonPlay.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
         buttonPlay.setText("Play");
+        buttonPlay.setMaximumSize(new java.awt.Dimension(157, 39));
+        buttonPlay.setMinimumSize(new java.awt.Dimension(157, 39));
         buttonPlay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonPlayActionPerformed(evt);
             }
         });
 
-        buttonLeaderboard.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        buttonLeaderboard.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
         buttonLeaderboard.setText("Leaderboard");
         buttonLeaderboard.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,7 +71,7 @@ public class FormGameMenu extends javax.swing.JFrame {
             }
         });
 
-        buttonAdminCP.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        buttonAdminCP.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
         buttonAdminCP.setText("Admin Tools");
         buttonAdminCP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,33 +84,30 @@ public class FormGameMenu extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(labelUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(169, Short.MAX_VALUE)
+                .addContainerGap(109, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelMathsQuiz)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(buttonPlay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buttonLeaderboard, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                        .addComponent(buttonAdminCP, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)))
-                .addGap(136, 136, 136))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(buttonAdminCP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonLeaderboard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonPlay, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(86, 86, 86))
+            .addComponent(labelUserName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(labelUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(183, 183, 183)
-                .addComponent(labelMathsQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(49, 49, 49)
+                .addComponent(labelMathsQuiz)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(buttonPlay, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61)
+                .addGap(50, 50, 50)
                 .addComponent(buttonLeaderboard, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62)
-                .addComponent(buttonAdminCP, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(144, Short.MAX_VALUE))
+                .addGap(50, 50, 50)
+                .addComponent(buttonAdminCP, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(128, Short.MAX_VALUE))
         );
 
         pack();
@@ -147,7 +147,9 @@ public class FormGameMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonLeaderboardActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        labelUserName.setText(person.getUserName());
+        getContentPane().setBackground(Color.darkGray);
+        String welcome = "Welcome " + person.getUserName();
+        labelUserName.setText(welcome);
         //Hide admin button if user
         if (person.getUserRank() == 'u') {
             buttonAdminCP.setVisible(false);
@@ -155,7 +157,7 @@ public class FormGameMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void buttonAdminCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdminCPActionPerformed
-        //Register jFrame
+        //Admin Control Panel jFrame
         FormAdminCP formAdminCP = new FormAdminCP();
         formAdminCP.setVisible(true);
     }//GEN-LAST:event_buttonAdminCPActionPerformed

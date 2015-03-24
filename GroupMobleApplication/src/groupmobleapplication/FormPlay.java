@@ -5,6 +5,7 @@
  */
 package groupmobleapplication;
 
+import java.awt.Color;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -44,30 +45,41 @@ public class FormPlay extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        progressBarQuiz = new javax.swing.JProgressBar();
+        labelWatch = new javax.swing.JLabel();
         labelTimer = new javax.swing.JLabel();
+        labelLogo = new javax.swing.JLabel();
         labelQuestion = new javax.swing.JLabel();
         buttonAnswer1 = new javax.swing.JButton();
         buttonAnswer2 = new javax.swing.JButton();
         buttonAnswer3 = new javax.swing.JButton();
         buttonAnswer4 = new javax.swing.JButton();
-        progressBarQuiz = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
 
-        labelTimer.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        labelTimer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelTimer.setText("Time Left: ");
+        progressBarQuiz.setForeground(new java.awt.Color(0, 255, 0));
 
-        labelQuestion.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        labelWatch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/groupmobleapplication/watch.png"))); // NOI18N
+
+        labelTimer.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+        labelTimer.setForeground(new java.awt.Color(255, 255, 255));
+        labelTimer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelTimer.setText(" ");
+
+        labelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/groupmobleapplication/logo2small.png"))); // NOI18N
+
+        labelQuestion.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
+        labelQuestion.setForeground(new java.awt.Color(255, 255, 255));
         labelQuestion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelQuestion.setText("Question");
 
-        buttonAnswer1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        buttonAnswer1.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
         buttonAnswer1.setText("Answer1");
         buttonAnswer1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,7 +87,7 @@ public class FormPlay extends javax.swing.JFrame {
             }
         });
 
-        buttonAnswer2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        buttonAnswer2.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
         buttonAnswer2.setText("Answer2");
         buttonAnswer2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,7 +95,7 @@ public class FormPlay extends javax.swing.JFrame {
             }
         });
 
-        buttonAnswer3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        buttonAnswer3.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
         buttonAnswer3.setText("Answer3");
         buttonAnswer3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,7 +103,7 @@ public class FormPlay extends javax.swing.JFrame {
             }
         });
 
-        buttonAnswer4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        buttonAnswer4.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
         buttonAnswer4.setText("Answer4");
         buttonAnswer4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,34 +116,43 @@ public class FormPlay extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(progressBarQuiz, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(162, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(buttonAnswer1, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                    .addComponent(buttonAnswer2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonAnswer3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonAnswer4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(143, 143, 143))
-            .addComponent(labelTimer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(labelQuestion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(labelWatch)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelTimer, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelLogo))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(103, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(buttonAnswer1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonAnswer2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonAnswer3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonAnswer4, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(92, 92, 92))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(progressBarQuiz, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
-                .addGap(1, 1, 1)
-                .addComponent(labelTimer, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(progressBarQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(labelQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(116, 116, 116)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(labelWatch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(labelTimer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(labelLogo))
+                .addGap(109, 109, 109)
+                .addComponent(labelQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
                 .addComponent(buttonAnswer1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
+                .addGap(50, 50, 50)
                 .addComponent(buttonAnswer2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54)
+                .addGap(50, 50, 50)
                 .addComponent(buttonAnswer3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55)
+                .addGap(50, 50, 50)
                 .addComponent(buttonAnswer4, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         pack();
@@ -154,6 +175,7 @@ public class FormPlay extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonAnswer4ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        getContentPane().setBackground(Color.darkGray);
         initialise();
         labelQuestion.setText(getQuestionTitle());
         setRandomButton();
@@ -165,7 +187,7 @@ public class FormPlay extends javax.swing.JFrame {
             public void run() {
                 secondsLeft -= 1000;
                 int timeLeft = (int) secondsLeft / 1000;
-                labelTimer.setText("Time Left: " + Integer.toString(timeLeft));
+                labelTimer.setText(Integer.toString(timeLeft));
                 if (secondsLeft == 0) {
                     secondsLeft = secondsDifficulty;
                     checkAnswer("invalid");
@@ -202,7 +224,7 @@ public class FormPlay extends javax.swing.JFrame {
         }
 
         int timeLeft = (int) secondsLeft / 1000;
-        labelTimer.setText("Time Left: " + Integer.toString(timeLeft));
+        labelTimer.setText(Integer.toString(timeLeft));
     }
 
     public void setDifficulty(int i) {
@@ -335,8 +357,10 @@ public class FormPlay extends javax.swing.JFrame {
     private javax.swing.JButton buttonAnswer2;
     private javax.swing.JButton buttonAnswer3;
     private javax.swing.JButton buttonAnswer4;
+    private javax.swing.JLabel labelLogo;
     private javax.swing.JLabel labelQuestion;
     private javax.swing.JLabel labelTimer;
+    private javax.swing.JLabel labelWatch;
     private javax.swing.JProgressBar progressBarQuiz;
     // End of variables declaration//GEN-END:variables
 }
