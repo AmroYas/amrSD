@@ -32,8 +32,8 @@ public class FormLogIn extends javax.swing.JFrame {
         labelMathsQuiz = new javax.swing.JLabel();
         labelUserName = new javax.swing.JLabel();
         textFieldUserName = new javax.swing.JTextField();
-        passwordField = new javax.swing.JPasswordField();
         labelPassword = new javax.swing.JLabel();
+        passwordField = new javax.swing.JPasswordField();
         buttonSubmit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);

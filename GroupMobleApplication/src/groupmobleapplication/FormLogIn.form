@@ -96,8 +96,6 @@
     </Component>
     <Component class="javax.swing.JTextField" name="textFieldUserName">
     </Component>
-    <Component class="javax.swing.JPasswordField" name="passwordField">
-    </Component>
     <Component class="javax.swing.JLabel" name="labelPassword">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -106,6 +104,8 @@
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Password:"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="passwordField">
     </Component>
     <Component class="javax.swing.JButton" name="buttonSubmit">
       <Properties>

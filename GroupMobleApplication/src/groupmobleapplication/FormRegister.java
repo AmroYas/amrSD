@@ -30,25 +30,25 @@ public class FormRegister extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        labelUserName = new javax.swing.JLabel();
         labelRegister = new javax.swing.JLabel();
-        labelPassword = new javax.swing.JLabel();
-        labelPasswordConfirm = new javax.swing.JLabel();
-        buttonSubmit = new javax.swing.JButton();
-        passwordField = new javax.swing.JPasswordField();
-        passwordFieldConfirm = new javax.swing.JPasswordField();
+        labelUserName = new javax.swing.JLabel();
         textFieldUserName = new javax.swing.JTextField();
+        labelPassword = new javax.swing.JLabel();
+        passwordField = new javax.swing.JPasswordField();
+        labelPasswordConfirm = new javax.swing.JLabel();
+        passwordFieldConfirm = new javax.swing.JPasswordField();
+        buttonSubmit = new javax.swing.JButton();
         buttonBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        labelUserName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        labelUserName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelUserName.setText("Username:");
-
         labelRegister.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         labelRegister.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelRegister.setText("Register");
+
+        labelUserName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        labelUserName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelUserName.setText("Username:");
 
         labelPassword.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         labelPassword.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

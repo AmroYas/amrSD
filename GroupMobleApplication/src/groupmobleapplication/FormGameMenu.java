@@ -32,10 +32,10 @@ public class FormGameMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonPlay = new javax.swing.JButton();
-        labelUserName = new javax.swing.JLabel();
-        buttonLeaderboard = new javax.swing.JButton();
         labelMathsQuiz = new javax.swing.JLabel();
+        labelUserName = new javax.swing.JLabel();
+        buttonPlay = new javax.swing.JButton();
+        buttonLeaderboard = new javax.swing.JButton();
         buttonAdminCP = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -45,6 +45,13 @@ public class FormGameMenu extends javax.swing.JFrame {
             }
         });
 
+        labelMathsQuiz.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        labelMathsQuiz.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelMathsQuiz.setText("Maths Quiz");
+
+        labelUserName.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        labelUserName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         buttonPlay.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         buttonPlay.setText("Play");
         buttonPlay.addActionListener(new java.awt.event.ActionListener() {
@@ -53,9 +60,6 @@ public class FormGameMenu extends javax.swing.JFrame {
             }
         });
 
-        labelUserName.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        labelUserName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
         buttonLeaderboard.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         buttonLeaderboard.setText("Leaderboard");
         buttonLeaderboard.addActionListener(new java.awt.event.ActionListener() {
@@ -63,10 +67,6 @@ public class FormGameMenu extends javax.swing.JFrame {
                 buttonLeaderboardActionPerformed(evt);
             }
         });
-
-        labelMathsQuiz.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        labelMathsQuiz.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelMathsQuiz.setText("Maths Quiz");
 
         buttonAdminCP.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         buttonAdminCP.setText("Admin Tools");
