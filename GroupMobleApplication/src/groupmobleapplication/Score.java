@@ -11,14 +11,14 @@ package groupmobleapplication;
  */
 public class Score {
 
-    private int difficulty = 0;
-    private double score = 0;
+    private int difficulty;
+    private int score = 0;
 
     public Score(int i) {
         difficulty = i;
     }
 
-    public double getScore() {
+    public int getScore() {
         return score;
     }
 
@@ -26,6 +26,7 @@ public class Score {
         switch (difficulty) {
             case 0:
                 score += 10;
+                break;
             case 1:
                 score += 25;
                 break;

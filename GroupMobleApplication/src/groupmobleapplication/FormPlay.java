@@ -17,7 +17,8 @@ public class FormPlay extends javax.swing.JFrame {
 
     private int chosenDifficulty = 0;
     private final int numberOfQuestions = 10;
-    private Score playerScore = new Score(chosenDifficulty);
+    private int questionNo = 0;
+    private Score playerScore;
     private Question[] questions = new Question[numberOfQuestions];
 
     /**
@@ -127,75 +128,109 @@ public class FormPlay extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonAnswer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAnswer1ActionPerformed
-        // TODO add your handling code here:
+        checkAnswer(buttonAnswer1.getText());
     }//GEN-LAST:event_buttonAnswer1ActionPerformed
 
     private void buttonAnswer2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAnswer2ActionPerformed
-        // TODO add your handling code here:
+        checkAnswer(buttonAnswer2.getText());
     }//GEN-LAST:event_buttonAnswer2ActionPerformed
 
     private void buttonAnswer3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAnswer3ActionPerformed
-        // TODO add your handling code here:
+        checkAnswer(buttonAnswer3.getText());
     }//GEN-LAST:event_buttonAnswer3ActionPerformed
 
     private void buttonAnswer4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAnswer4ActionPerformed
-        // TODO add your handling code here:
+        checkAnswer(buttonAnswer4.getText());
     }//GEN-LAST:event_buttonAnswer4ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
+        playerScore = new Score(chosenDifficulty);
+        
         for (int i = 0; i < numberOfQuestions; i++) {
             questions[i] = new Question(chosenDifficulty);
         }
 
-        String theQuestion = "What is " + questions[0].getQuestion() + " ?";
-        labelQuestion.setText(theQuestion);
-
-        System.out.println("Answer is " + questions[0].getAnswer());
-
-        int buttonNumber = rand.nextInt((4 - 1) + 1) + 1;
-        switch (buttonNumber) {
-            case 1:
-                buttonAnswer1.setText(questions[0].getAnswer());
-                int randAnswer = (Integer.parseInt(questions[0].getAnswer())) + 15;
-                buttonAnswer2.setText(Integer.toString(randAnswer));
-                randAnswer = (Integer.parseInt(questions[0].getAnswer())) - 15;
-                buttonAnswer3.setText(Integer.toString(randAnswer));
-                randAnswer = (Integer.parseInt(questions[0].getAnswer())) + 5;
-                buttonAnswer4.setText(Integer.toString(randAnswer));
-                break;
-            case 2:
-                int randAnswer2 = (Integer.parseInt(questions[0].getAnswer())) + 15;
-                buttonAnswer1.setText(Integer.toString(randAnswer2));
-                buttonAnswer2.setText(questions[0].getAnswer());
-                randAnswer2 = (Integer.parseInt(questions[0].getAnswer())) - 15;
-                buttonAnswer3.setText(Integer.toString(randAnswer2));
-                randAnswer2 = (Integer.parseInt(questions[0].getAnswer())) + 5;
-                buttonAnswer4.setText(Integer.toString(randAnswer2));
-                break;
-            case 3:
-                int randAnswer3 = (Integer.parseInt(questions[0].getAnswer())) + 15;
-                buttonAnswer1.setText(Integer.toString(randAnswer3));
-                randAnswer3 = (Integer.parseInt(questions[0].getAnswer())) + 15;
-                buttonAnswer2.setText(Integer.toString(randAnswer3));
-                buttonAnswer3.setText(questions[0].getAnswer());
-                randAnswer3 = (Integer.parseInt(questions[0].getAnswer())) + 5;
-                buttonAnswer4.setText(Integer.toString(randAnswer3));
-                break;
-            case 4:
-                int randAnswer4 = (Integer.parseInt(questions[0].getAnswer())) + 15;
-                buttonAnswer1.setText(Integer.toString(randAnswer4));
-                randAnswer4 = (Integer.parseInt(questions[0].getAnswer())) - 15;
-                buttonAnswer2.setText(Integer.toString(randAnswer4));
-                randAnswer4 = (Integer.parseInt(questions[0].getAnswer())) - 15;
-                buttonAnswer3.setText(Integer.toString(randAnswer4));
-                buttonAnswer4.setText(questions[0].getAnswer());
-                break;
-        }
+        labelQuestion.setText(getQuestionTitle());
+        setRandomButton();
+        setChosenButton();
     }//GEN-LAST:event_formWindowOpened
 
     public void setDifficulty(int i) {
         chosenDifficulty = i;
+    }
+
+    private String getQuestionTitle() {
+        String theQuestion = "What is " + questions[questionNo].getQuestion() + " ?";
+        return theQuestion;
+    }
+
+    private void setRandomButton() {
+        int[] randAnswer = new int[4];
+        for (int i = 0; i < 4; i++) {
+            int randOperator = rand.nextInt((1 - 0) + 1) + 0; // Random Operator (Number between 0-1)
+            int randNumber = 0;
+            switch (randOperator) {
+                case 0:
+                    randNumber = rand.nextInt((20 - 1) + 1) + 1; // Random Number (Number between 15-1)
+                    randAnswer[i] = (Integer.parseInt(questions[questionNo].getAnswer())) + randNumber;
+                    break;
+                case 1:
+                    randNumber = rand.nextInt((20 - 1) + 1) + 1; // Random Number (Number between 15-1)
+                    randAnswer[i] = (Integer.parseInt(questions[questionNo].getAnswer())) - randNumber;
+                    break;
+            }
+        }
+        buttonAnswer1.setText(Integer.toString(randAnswer[0]));
+        buttonAnswer2.setText(Integer.toString(randAnswer[1]));
+        buttonAnswer3.setText(Integer.toString(randAnswer[2]));
+        buttonAnswer4.setText(Integer.toString(randAnswer[3]));
+    }
+
+    private void setChosenButton() {
+        System.out.println((questionNo + 1));
+        System.out.println("Answer is " + questions[questionNo].getAnswer());
+        int buttonNumber = rand.nextInt((4 - 1) + 1) + 1;
+        switch (buttonNumber) {
+            case 1:
+                buttonAnswer1.setText(questions[questionNo].getAnswer());
+                break;
+            case 2:
+                buttonAnswer2.setText(questions[questionNo].getAnswer());
+                break;
+            case 3:
+                buttonAnswer3.setText(questions[questionNo].getAnswer());
+                break;
+            case 4:
+                buttonAnswer4.setText(questions[questionNo].getAnswer());
+                break;
+        }
+    }
+
+    private void checkAnswer(String buttonAnswer) {
+        if (buttonAnswer.equals(questions[questionNo].getAnswer())) {
+            System.out.println("Correct");
+            playerScore.addPoints();
+            System.out.println("User Score: " + playerScore.getScore());
+            System.out.println(" ");
+            advanceQuestion();
+        } else {
+            System.out.println("Incorrect");
+            System.out.println(" ");
+            advanceQuestion();
+        }
+    }
+
+    private void advanceQuestion() {
+        questionNo++;
+        if (questionNo < 9) {
+            labelQuestion.setText(getQuestionTitle());
+            setRandomButton();
+            setChosenButton();
+        } else {
+            System.out.println("Congrats");
+            //New Congratulations(Showing Score) Frame
+            dispose();
+        }
     }
 
     /**
