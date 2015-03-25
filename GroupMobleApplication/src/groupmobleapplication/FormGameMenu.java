@@ -5,6 +5,10 @@
  */
 package groupmobleapplication;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Dennis
@@ -121,9 +125,20 @@ public class FormGameMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonPlayActionPerformed
 
     private void buttonLeaderboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLeaderboardActionPerformed
-        //Register Button Code
-        //this.setVisible(false);
-        //Register jFrame
+       //Register jFrame
+        this.setVisible(false);
+       FormLeaderboard formLeader = null;
+       
+           // Myform formform = new Myform();
+        try {
+            formLeader = new FormLeaderboard();
+        } catch (SQLException ex) {
+            Logger.getLogger(FormGameMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+           // formform.lables();
+        
+      formLeader.setVisible(true);
+      
     }//GEN-LAST:event_buttonLeaderboardActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -170,7 +185,11 @@ public class FormGameMenu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                
+               // new Myform().setVisible(true);
                 new FormGameMenu().setVisible(true);
+                
+                
             }
         });
     }
