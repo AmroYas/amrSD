@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  */
 public class FormGameMenu extends javax.swing.JFrame {
 
-    private Person person = new Person("default", 'u');
+    private Person person = new Person("default", 'u', 0);
 
     /**
      * Creates new form FormGameMenu

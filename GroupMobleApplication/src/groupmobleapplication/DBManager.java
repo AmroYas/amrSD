@@ -16,8 +16,9 @@ import java.util.Arrays;
 public class DBManager {
 
     private String userName;
+    private int userId;
     private char[] password;
-    private double attemptScore;
+    private int attemptScore;
     private int attemptNumber;
 
     SQLConnection myConnection = new SQLConnection();
@@ -30,6 +31,11 @@ public class DBManager {
 
     public DBManager(String name) {
         userName = name;
+    }
+
+    public DBManager(int id, int score) {
+        userId = id;
+        attemptScore = score;
     }
 
     public DBManager() {
@@ -90,6 +96,22 @@ public class DBManager {
         }
     }
 
+    public void submitScore() {
+        System.out.println(userId);
+        String getAttempt = "SELECT attempt FROM scores WHERE userID = " + userId + ";";
+        runQuery(getAttempt);
+        try { //Try to read the query Result Set
+            result.last(); //Move pointer to end
+            attemptNumber = result.getInt("attempt");
+            attemptNumber++;
+        } catch (SQLException e) {
+            attemptNumber = 1;
+            System.out.println("ERROR @getAttempt: Cannot execute read query.");
+        }
+        String scoreQuery = "INSERT INTO scores (attempt, userId, score) VALUES (" + attemptNumber + " , " + userId + " , " + attemptScore + ");";
+        myConnection.runUpdate(scoreQuery);
+    }
+
     public int getPasswordLength(ResultSet result) {
         int passwordLength = 0;
         try { //Try to read the query Result Set
@@ -128,6 +150,20 @@ public class DBManager {
             System.out.println("ERROR @getUserRank: Cannot execute read query.");
         }
         return userRank;
+    }
+
+    public int getUserId() {
+        String personId = "SELECT userId FROM users WHERE userName = '" + userName + "'";
+        runQuery(personId);
+        int userId = 0;
+        try { //Try to read the query Result Set
+            result.first(); //Move pointer to start
+            userId = result.getInt("userId");
+            System.out.println(userId);
+        } catch (SQLException e) {
+            System.out.println("ERROR @getUserRank: Cannot execute read query.");
+        }
+        return userId;
     }
 
     private void runQuery(String theQuery) {

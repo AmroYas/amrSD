@@ -148,7 +148,7 @@ public class FormLogIn extends javax.swing.JFrame {
                 this.setVisible(false);
                 //Game Menu jFrame
                 FormGameMenu formGameMenu = new FormGameMenu();
-                Person user = new Person(userName, dbm.getUserRank());
+                Person user = new Person(userName, dbm.getUserRank(), dbm.getUserId());
                 formGameMenu.setPerson(user);
                 formGameMenu.setVisible(true);
             }

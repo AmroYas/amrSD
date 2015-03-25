@@ -38,7 +38,7 @@ public class SQLConnection {
         try {
             t.go();
         } catch (Exception ex) {
-            System.out.println("Exception in Tunner");
+            System.out.println("Exception in Tunnel");
         }
 
         try { //Initialise the JDBC driver, with a check for it working
@@ -55,9 +55,11 @@ public class SQLConnection {
             //Make sure you disable tunnel above too.
             //**************************************************************************************************************
             connection = DriverManager.getConnection(
+                    //Connection address below works ony if you are running program from home or eny other network INSIDE UNI
+                    //**************************************************************************************************************
                     //"jdbc:mysql://elephant.ecs.westminster.ac.uk:3306/w1439058_0", "w1439058", "Sz2eZkchSIXI");
 
-                    //Connection address below works ony if you are running program from home or eny other network outside UNI
+                    //Connection address below works ony if you are running program from home or eny other network OUTSIDE UNI
                     //**************************************************************************************************************
                     "jdbc:mysql://localhost:9080/w1439058_0", "w1439058", "Sz2eZkchSIXI");
         } catch (SQLException e) {

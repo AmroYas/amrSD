@@ -13,7 +13,7 @@ import java.awt.Color;
  */
 public class FormGameOver extends javax.swing.JFrame {
 
-    private Person person = new Person("default", 'u');
+    private Person person = new Person("default", 'u', 0);
     private Score playerScore;
 
     /**
@@ -112,7 +112,13 @@ public class FormGameOver extends javax.swing.JFrame {
         labelCongrats.setText(congrats);
         String score = labelScore.getText() + Integer.toString(playerScore.getScore());
         labelScore.setText(score);
+        sendScoreDB();
     }//GEN-LAST:event_formWindowOpened
+
+    private void sendScoreDB() {
+        DBManager dbm = new DBManager(person.getUserId(), playerScore.getScore());
+        dbm.submitScore();
+    }
 
     public void setPerson(Person aPerson) {
         person = aPerson;

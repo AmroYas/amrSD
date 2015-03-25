@@ -13,10 +13,12 @@ public class Person {
 
     private String userName;
     private char rank;
+    private int userId;
 
-    public Person(String user, char u) {
+    public Person(String user, char u, int id) {
         userName = user;
         rank = u;
+        userId = id;
     }
 
     public String getUserName() {
@@ -25,5 +27,9 @@ public class Person {
     
     public char getUserRank() {
         return rank;
+    }
+    
+    public int getUserId() {
+        return userId;
     }
 }
