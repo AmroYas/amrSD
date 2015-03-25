@@ -47,17 +47,17 @@ public class FormGameOver extends javax.swing.JFrame {
 
         labelMathsQuiz.setIcon(new javax.swing.ImageIcon(getClass().getResource("/groupmobleapplication/logo.png"))); // NOI18N
 
-        labelCongrats.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
+        labelCongrats.setFont(new java.awt.Font("Calibri", 0, 28)); // NOI18N
         labelCongrats.setForeground(new java.awt.Color(255, 255, 255));
         labelCongrats.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelCongrats.setText("Congratulations: ");
 
-        labelScore.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        labelScore.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
         labelScore.setForeground(new java.awt.Color(255, 255, 255));
         labelScore.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelScore.setText("Your score is: ");
 
-        buttonMainMenu.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        buttonMainMenu.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
         buttonMainMenu.setText("Main Menu");
         buttonMainMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

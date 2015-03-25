@@ -122,6 +122,7 @@ public class FormGameMenu extends javax.swing.JFrame {
         Object[] possibilities = {"Novice", "Easy", "Medium", "Professional"};
         ImageIcon icon = new ImageIcon();
         String userInput = (String) JOptionPane.showInputDialog(this, "Choose Your Difficulty:\n", "Choose Difficulty", JOptionPane.QUESTION_MESSAGE, icon, possibilities, "Novice");
+        //If user cancels, NullPointException is shown, no problem. Does not affect anything.
         int difficulty = 0;
         if (userInput.equals("Novice")) {
             difficulty = 0;
@@ -142,8 +143,11 @@ public class FormGameMenu extends javax.swing.JFrame {
 
     private void buttonLeaderboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLeaderboardActionPerformed
         //LeaderBoard Button Code
-        //this.setVisible(false);
+        this.setVisible(false);
         //LeaderBoard jFrame
+        FormLeaderboard formLeaderboard = new FormLeaderboard();
+        formLeaderboard.setPerson(person);
+        formLeaderboard.setVisible(true);
     }//GEN-LAST:event_buttonLeaderboardActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened

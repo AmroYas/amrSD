@@ -110,7 +110,7 @@ public class DBManager {
     }
 
     public void submitScore() {
-        String getAttempt = "SELECT attempt FROM scores WHERE userID = " + userId + ";";
+        String getAttempt = "SELECT attempt FROM scores WHERE userID = " + userId;
         runQuery(getAttempt);
         try { //Try to read the query Result Set
             result.last(); //Move pointer to end
@@ -125,7 +125,7 @@ public class DBManager {
     }
 
     public String getPassword() {
-        String getPassword = "SELECT userPassword FROM users WHERE userName = '" + userName + "';";
+        String getPassword = "SELECT userPassword FROM users WHERE userName = '" + userName + "'";
         runQuery(getPassword);
         String thePassword = "";
         try { //Try to read the query Result Set
@@ -162,6 +162,25 @@ public class DBManager {
             System.out.println("ERROR @validateName: Cannot execute read query.");
         }
         return true;
+    }
+
+    public LeaderboardPerson[] generateLeaderboard() {
+        LeaderboardPerson[] population = new LeaderboardPerson[10];
+        int counter = 0;
+        String query = "SELECT users.userName, scores.score FROM users NATURAL JOIN scores ORDER BY scores.score DESC LIMIT 0, 10";
+        runQuery(query);// try to run the query
+        try {
+            while (result.next()) // while there's still some more results of the query...
+            {
+                String name = result.getString("users.userName");
+                int userScore = result.getInt("scores.score");
+                population[counter] = new LeaderboardPerson(name, userScore);
+                counter++;
+            }
+        } catch (SQLException e) {
+            System.out.println("ERROR @generateLeaderboard: Cannot execute query.");
+        }
+        return population;
     }
 
     public char getUserRank() {
