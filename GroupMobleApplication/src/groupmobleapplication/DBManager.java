@@ -78,6 +78,19 @@ public class DBManager {
         return success;
     }
 
+    public Boolean registerAdmin() {
+        String strPassword = "";
+        for (int i = 0; i < password.length; i++) {
+            strPassword += Character.toString(password[i]);
+        }
+        String registerQuery = "INSERT INTO users (userName, userPassword, userRank) VALUES ('" + userName
+                + "' , '" + strPassword + "' , 'a');";
+        Arrays.fill(password, '0');
+        strPassword = "0";
+        boolean success = myConnection.runUpdate(registerQuery);
+        return success;
+    }
+
     public void adminReadDB() {
         String selectAll = "SELECT userId, userName, userRank FROM users";
         runQuery(selectAll);
@@ -97,7 +110,6 @@ public class DBManager {
     }
 
     public void submitScore() {
-        System.out.println(userId);
         String getAttempt = "SELECT attempt FROM scores WHERE userID = " + userId + ";";
         runQuery(getAttempt);
         try { //Try to read the query Result Set
@@ -110,6 +122,19 @@ public class DBManager {
         }
         String scoreQuery = "INSERT INTO scores (attempt, userId, score) VALUES (" + attemptNumber + " , " + userId + " , " + attemptScore + ");";
         myConnection.runUpdate(scoreQuery);
+    }
+
+    public String getPassword() {
+        String getPassword = "SELECT userPassword FROM users WHERE userName = '" + userName + "';";
+        runQuery(getPassword);
+        String thePassword = "";
+        try { //Try to read the query Result Set
+            result.first(); //Move pointer to start
+            thePassword = result.getString("userPassword");
+        } catch (SQLException e) {
+            System.out.println("ERROR @getPassword: Cannot execute read query.");
+        }
+        return thePassword;
     }
 
     public int getPasswordLength(ResultSet result) {

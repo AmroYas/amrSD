@@ -6,6 +6,13 @@
 package groupmobleapplication;
 
 import java.awt.Color;
+import java.awt.GridLayout;
+import java.util.Arrays;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 /**
  *
@@ -118,18 +125,97 @@ public class FormAdminCP extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonPrintDBActionPerformed
 
     private void buttonAddAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddAdminActionPerformed
-        //Insert new admin with a char 'a' for userRank
-        //Needs unique name and password like others.
+        //Dialog
+        JTextField adminUsername = new JTextField();
+        JPasswordField adminPassword = new JPasswordField();
+        JPasswordField adminPasswordConfirm = new JPasswordField();
+        JPanel panel = new JPanel(new GridLayout(0, 1));
+        panel.add(new JLabel("New Admin Username:"));
+        panel.add(adminUsername);
+        panel.add(new JLabel("New Admin Password:"));
+        panel.add(adminPassword);
+        panel.add(new JLabel("Confirm New Admin Password:"));
+        panel.add(adminPasswordConfirm);
+        int result = JOptionPane.showConfirmDialog(null, panel, "New Admin Registration",
+                JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+        if (result == JOptionPane.OK_OPTION) {
+            String userName = adminUsername.getText();
+            char[] password = adminPassword.getPassword();
+            char[] passwordConfirm = adminPasswordConfirm.getPassword();
+            boolean confirmedUN = validateUserName(userName);
+            if (!confirmedUN) {
+                JOptionPane.showMessageDialog(this,
+                        "Somebody already has this username.",
+                        "Invalid Username",
+                        JOptionPane.ERROR_MESSAGE);
+                adminUsername.setText("");
+            }
+            boolean confirmedPW = validatePassword(password, passwordConfirm);
+            if (confirmedPW && confirmedUN) {
+                //SQL Insert
+                DBManager dbm = new DBManager(userName, password);
+                boolean success = dbm.registerAdmin();
+                if (success) {
+                    System.out.println("Registration Successful");
+                } else {
+                    JOptionPane.showMessageDialog(this,
+                            "Registration Failed.",
+                            "Registration Failed",
+                            JOptionPane.ERROR_MESSAGE);
+                    System.out.println("Registration Failed");
+                }
+            }
+        } else {
+            System.out.println("Cancelled");
+        }
     }//GEN-LAST:event_buttonAddAdminActionPerformed
 
     private void buttonGetPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGetPasswordActionPerformed
-        //Enter username
-        //Recieve password
+        //Dialog
+        JTextField chosenUserName = new JTextField();
+        JPanel panel = new JPanel(new GridLayout(0, 1));
+        panel.add(new JLabel("Enter Username:"));
+        panel.add(chosenUserName);
+        int result = JOptionPane.showConfirmDialog(null, panel, "Forgotten Password",
+                JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+        if (result == JOptionPane.OK_OPTION) {
+            String userName = chosenUserName.getText();
+            DBManager dbm = new DBManager(userName);
+            JOptionPane.showMessageDialog(this, "Password is " + dbm.getPassword());
+        } else {
+            System.out.println("Cancelled");
+        }
     }//GEN-LAST:event_buttonGetPasswordActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         getContentPane().setBackground(Color.darkGray);
     }//GEN-LAST:event_formWindowOpened
+
+    private Boolean validateUserName(String username) {
+        DBManager dbm = new DBManager(username);
+        if (!dbm.validateName()) { //False - Username Exists
+            return false;
+        }
+        return true;
+    }
+
+    private Boolean validatePassword(char[] password, char[] passwordConfirm) {
+        if (!Arrays.equals(password, passwordConfirm)) {
+            JOptionPane.showMessageDialog(this,
+                    "Passwords don't match.",
+                    "Invalid Password",
+                    JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if ((password.length < 5) || (password.length == 0)) {
+            JOptionPane.showMessageDialog(this,
+                    "Password is less than 5 characters or blank.",
+                    "Invalid Password",
+                    JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
 
     /**
      * @param args the command line arguments
