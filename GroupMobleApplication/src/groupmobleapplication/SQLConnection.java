@@ -36,7 +36,7 @@ public class SQLConnection {
         //**************************************************************************************************************
         //TUNNEL
         try {
-            t.go();
+            t.connection();
         } catch (Exception ex) {
             System.out.println("Exception in Tunnel");
         }
@@ -57,11 +57,11 @@ public class SQLConnection {
             connection = DriverManager.getConnection(
                     //Connection address below works ony if you are running program from home or eny other network INSIDE UNI
                     //**************************************************************************************************************
-                    //"jdbc:mysql://elephant.ecs.westminster.ac.uk:3306/w1439058_0", "w1439058", "Sz2eZkchSIXI");
+                  // "jdbc:mysql://elephant.ecs.westminster.ac.uk:3306/w1439058_0", "w1439058", "Sz2eZkchSIXI");
 
                     //Connection address below works ony if you are running program from home or eny other network OUTSIDE UNI
                     //**************************************************************************************************************
-                    "jdbc:mysql://localhost:9080/w1439058_0", "w1439058", "Sz2eZkchSIXI");
+                  "jdbc:mysql://localhost:9080/w1439058_0", "w1439058", "Sz2eZkchSIXI");
         } catch (SQLException e) {
             System.out.println("ERROR: MySQL Connection Failed!");
             return;
