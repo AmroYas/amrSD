@@ -63,6 +63,11 @@ public class FormRegister extends javax.swing.JFrame {
         labelPassword.setText("Password:");
 
         passwordField.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+        passwordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordFieldActionPerformed(evt);
+            }
+        });
 
         labelPasswordConfirm.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
         labelPasswordConfirm.setForeground(new java.awt.Color(255, 255, 255));
@@ -190,6 +195,10 @@ public class FormRegister extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         getContentPane().setBackground(Color.darkGray);
     }//GEN-LAST:event_formWindowOpened
+
+    private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordFieldActionPerformed
 
     /**
      * @param args the command line arguments

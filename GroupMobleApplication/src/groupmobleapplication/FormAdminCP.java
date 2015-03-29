@@ -6,6 +6,7 @@
 package groupmobleapplication;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -119,6 +120,9 @@ public class FormAdminCP extends javax.swing.JFrame {
 
     private void buttonAddAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddAdminActionPerformed
         //Insert new admin with a char 'a' for userRank
+        MakeAdmin ma = new MakeAdmin();
+        this.setVisible(true);
+        JOptionPane.showMessageDialog(null, ma, "Enter details", JOptionPane.PLAIN_MESSAGE);
         //Needs unique name and password like others.
     }//GEN-LAST:event_buttonAddAdminActionPerformed
 
