@@ -13,7 +13,7 @@ import com.jcraft.jsch.*;
  */
 public class Tunnel {
 
-    public void connection() throws Exception {
+    public void go() throws Exception {
         String host = "jaguar.wmin.ac.uk";
         String user = "w1439058";
         String password = "zumarik101";
